@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const config = require("config");
 
 const app = express();
 
@@ -9,17 +10,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // DB config
-const db = require("./config/keys").mongoUri;
+const db = config.get("mongoUri");
 
 // Connect Database
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("Database connected"))
   .catch((err) => console.log(err));
 mongoose.set("useFindAndModify", false);
 
-// Use Api Routes
+// Used Routes
 app.use("/api/todos", require("./routes/api/todos"));
+app.use("/api/users", require("./routes/api/users"));
 
 // If the environment is production
 if (process.env.NODE_ENV === "production") {

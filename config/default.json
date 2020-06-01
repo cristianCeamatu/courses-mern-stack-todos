@@ -1,0 +1,4 @@
+{
+  "mongoUri": "mongodb+srv://cristianceamatu:Pin780juke031@mern-stack-ll6xw.mongodb.net/mern-stack?retryWrites=true&w=majority",
+  "jwtSecret": "sl_myJwtSecret"
+}
