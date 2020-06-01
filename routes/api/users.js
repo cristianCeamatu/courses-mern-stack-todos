@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 // Get the User model
 const User = require("../../models/User");
 
-// @route   GET api/users
+// @route   POST api/users
 // @desc    Register new user
 // @access  Public
 router.post("/", (request, response) => {
@@ -32,13 +32,23 @@ router.post("/", (request, response) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
         newUser.password = hash;
         newUser.save().then((user) => {
-          response.json({
-            user: {
-              id: user.id,
-              name: user.name,
-              email: user.email,
-            },
-          });
+          jwt.sign(
+            { id: user.id },
+            config.get("jwtSecret"),
+            { expiresIn: 3600 },
+            (err, token) => {
+              if (err) throw err;
+
+              response.json({
+                token,
+                user: {
+                  id: user.id,
+                  name: user.name,
+                  email: user.email,
+                },
+              });
+            }
+          );
         });
       });
     });

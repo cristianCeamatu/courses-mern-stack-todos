@@ -26,6 +26,7 @@ mongoose.set("useFindAndModify", false);
 // Used Routes
 app.use("/api/todos", require("./routes/api/todos"));
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 // If the environment is production
 if (process.env.NODE_ENV === "production") {
