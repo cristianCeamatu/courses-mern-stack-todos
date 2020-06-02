@@ -1,21 +1,26 @@
-import React from "react";
-import { Provider } from "react-redux";
-import store from "./store";
+import React, { Component } from "react";
 import NavBar from "./components/NavBar";
 import TodoList from "./components/TodoList";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import { Provider } from "react-redux";
+import store from "./store";
+import { loadUser } from "./actions/authActions";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <div className="App">
+import "bootstrap/dist/css/bootstrap.min.css";
+
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
         <NavBar />
         <TodoList />
-      </div>
-    </Provider>
-  );
+      </Provider>
+    );
+  }
 }
 
 export default App;
