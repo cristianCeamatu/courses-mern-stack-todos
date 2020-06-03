@@ -30,7 +30,7 @@ const LoginModal = ({ error, isAuthenticated, login, clearErrors }) => {
     if (open && isAuthenticated) {
       setOpen(!open);
     }
-  }, [error]);
+  }, [error, open, isAuthenticated]);
 
   return (
     <NavLink style={{ cursor: "pointer" }} onClick={() => setOpen(!open)}>
