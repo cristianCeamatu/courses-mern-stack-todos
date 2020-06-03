@@ -24,7 +24,7 @@ const RegisterModal = (props) => {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState(null);
 
-  const { error, isAuthenticated } = props;
+  const { error, isAuthenticated, clearErrors } = props;
   useEffect(() => {
     if (error.id === "REGISTER_FAIL") setMsg(error.msg);
     else setMsg(null);
@@ -32,7 +32,7 @@ const RegisterModal = (props) => {
     if (open && isAuthenticated) {
       setOpen(!open);
     }
-  }, [error]);
+  }, [error, open, isAuthenticated]);
 
   return (
     <NavLink style={{ cursor: "pointer" }} onClick={() => setOpen(!open)}>
@@ -40,13 +40,13 @@ const RegisterModal = (props) => {
       <Modal
         isOpen={open}
         toggle={() => {
-          props.clearErrors();
+          clearErrors();
           setOpen(!open);
         }}
       >
         <ModalHeader
           toggle={() => {
-            props.clearErrors();
+            clearErrors();
             setOpen(!open);
           }}
         >
