@@ -16,22 +16,35 @@ class TodoList extends Component {
 
   render() {
     const { todos } = this.props.todos;
+    const { isAuthenticated } = this.props;
+
     return (
       <Container>
-        <AddTodoModal />
+        {isAuthenticated ? (
+          <AddTodoModal />
+        ) : (
+          <h4 className="mb-3 ml-4">Please login to modify todos</h4>
+        )}
+
         <ListGroup>
           <TransitionGroup className="todo-list">
             {todos.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  <Button
-                    className="btn btn-danger"
-                    size="sm"
-                    onClick={() => this.props.deleteTodo(_id)}
-                  >
-                    &#10008;
-                  </Button>
-                  <UpdateTodoModal id={_id} currentName={name} />
+                  {isAuthenticated ? (
+                    <>
+                      <Button
+                        className="btn btn-danger"
+                        size="sm"
+                        onClick={() => this.props.deleteTodo(_id)}
+                      >
+                        &#10008;
+                      </Button>
+                      <UpdateTodoModal id={_id} currentName={name} />
+                    </>
+                  ) : (
+                    ""
+                  )}
                   {name}
                 </ListGroupItem>
               </CSSTransition>
@@ -46,11 +59,12 @@ class TodoList extends Component {
 TodoList.propTypes = {
   getTodos: PropTypes.func.isRequired,
   todos: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
-  // named as the given name in the compose reducers 'index.js'
   todos: state.todos,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, {

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../../middleware/auth");
 
 // Get the model
 const Todo = require("../../models/Todo");
@@ -22,8 +23,8 @@ router.get("/:id", (request, response) => {
 
 // @route   POST api/todos
 // @desc    Create a Todo
-// @access  Public
-router.post("/", (request, response) => {
+// @access  Private
+router.post("/", auth, (request, response) => {
   const newTodo = new Todo({
     name: request.body.name,
   });
@@ -33,8 +34,8 @@ router.post("/", (request, response) => {
 
 // @route   UPDATE api/todos/:id
 // @desc    Update a Todo
-// @access  Public
-router.put("/:id", (request, response) => {
+// @access  Private
+router.put("/:id", auth, (request, response) => {
   Todo.findByIdAndUpdate(
     { _id: request.params.id },
     { $set: { name: request.body.name, date: Date.now() } }
@@ -49,8 +50,8 @@ router.put("/:id", (request, response) => {
 
 // @route   DELETE api/todos/:id
 // @desc    Delete a Todo
-// @access  Public
-router.delete("/:id", (request, response) => {
+// @access  Private
+router.delete("/:id", auth, (request, response) => {
   Todo.findById(request.params.id)
     .then((todo) => todo.remove().then(() => response.json({ success: true })))
     .catch((err) => response.status(400).json({ success: false }));
