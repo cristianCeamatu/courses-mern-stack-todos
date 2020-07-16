@@ -26,7 +26,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 
-Clone the project locally and run `npm install` in the root directory.
+Clone the project locally and run `npm install` in both root and client directories.
 
 ## Available Scripts
 
