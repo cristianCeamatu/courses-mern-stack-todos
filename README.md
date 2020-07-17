@@ -1,11 +1,11 @@
 # Todo list created with the MERN (MongoDB-Express-React-Node) Stack
 
-> The project is a Todo list created as a side project. The web app has a Login sistem and is connected to MongoDB.
+> The project is a Todo list created as a side project. The web app has a Login system and is connected to MongoDB.
 
 ![screenshot](./app-screenshot-full.png)
 
-> I build the project after watching this [youtube tutorial](https://www.youtube.com/watch?v=PBTYxXADG_k&list=PLillGF-RfqbbiTGgA77tGO426V3hRF9iE) series.
-> The page is mobile responsive.
+> I built the project after watching this [youtube tutorial](https://www.youtube.com/watch?v=PBTYxXADG_k&list=PLillGF-RfqbbiTGgA77tGO426V3hRF9iE) series.
+> The app is mobile responsive.
 
 ## Built With
 
