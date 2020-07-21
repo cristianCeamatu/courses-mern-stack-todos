@@ -5,7 +5,7 @@
 ![screenshot](./app-screenshot-full.png)
 
 > I built the project after watching this [youtube tutorial](https://www.youtube.com/watch?v=PBTYxXADG_k&list=PLillGF-RfqbbiTGgA77tGO426V3hRF9iE) series.
-> The app is mobile responsive.
+> The app is mobile responsive and you need to create an account in order to add new items.
 
 ## Built With
 
