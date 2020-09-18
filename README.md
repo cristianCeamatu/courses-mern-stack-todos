@@ -72,8 +72,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 👤 **Cristian Viorel Ceamatu**
 
 - Github: [@githubhandle](https://github.com/cristianCeamatu)
-- Twitter: [@twitterhandle](https://twitter.com/CeamatuV)
-- Linkedin: [linkedin](https://www.linkedin.com/in/ceamatu-cristian-viorel-7a5469136/)
+- Twitter: [@twitterhandle](https://twitter.com/CeamatuCristian)
+- Linkedin: [linkedin](https://www.linkedin.com/in/ceamatu-cristian/)
 
 
 ## Show your support
